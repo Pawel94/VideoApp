@@ -16,21 +16,13 @@ const SearchVideo = () => {
     fetch(videoLinkJSON)
       .then((response) => response.json())
       .then((jsonData) => {
-        dispatch({
-          type: "ADD_MOVIE_TO_LIKE_LIST",
-          movie: {
-            title: jsonData.title,
-            img: jsonData.thumbnail_url,
-            linkToClick: linkToClick,
-          },
-        });
         SetFoundVideo({
           title: jsonData.title,
           img: jsonData.thumbnail_url,
           linkToClick: linkToClick,
         });
         console.log("jsonData");
-        console.log(jsonData);
+        console.log(foundVideo);
         return jsonData;
       })
       .catch((error) => {
@@ -43,7 +35,6 @@ const SearchVideo = () => {
       <SearchVideoBar handleFormSubmit={handleSubmit} />
       <Container className="themed-container">
         <VideoList foundVideo={foundVideo} />
-        <VideoLikedList foundVideo={foundVideo} />
       </Container>
     </div>
   );

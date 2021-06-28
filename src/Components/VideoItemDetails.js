@@ -9,12 +9,28 @@ import {
   Button,
 } from "reactstrap";
 
+import { MovieContex } from "../Context/MovieContex";
+
 const VideoItemDetails = ({ movie }) => {
-  console.log("list2 item !!!!");
+  const { dispatch } = useContext(MovieContex);
   console.log(movie);
+  const addMovieToLikeList = () => {
+    console.log("Dodaje");
+    dispatch({
+      type: "ADD_MOVIE_TO_LIKE_LIST",
+      movie: {
+        title: movie.title,
+        img: movie.img,
+        linkToClick: movie.linkToClick,
+      },
+    });
+  };
 
   return (
-    <Card style={{ margin: "1%", textAlign: "center" }}>
+    <Card
+      className="bg-secondary text-warning"
+      style={{ margin: "1%", textAlign: "center" }}
+    >
       <CardImg
         top
         width="100%"
@@ -28,7 +44,7 @@ const VideoItemDetails = ({ movie }) => {
           Upload Date: {movie.dateUpload}
         </CardSubtitle>
         <CardText>{movie.linkToClick}</CardText>
-        <Button onClick={() => window.open(movie.linkToClick)}>
+        <Button outline color="info" onClick={addMovieToLikeList}>
           LIKE This video!
         </Button>
       </CardBody>

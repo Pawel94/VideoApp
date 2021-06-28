@@ -1,36 +1,24 @@
-import React, { useState } from "react";
-import {
-  Collapse,
-  Navbar,
-  NavbarToggler,
-  NavbarBrand,
-  Nav,
-  NavItem,
-  NavLink,
-  UncontrolledDropdown,
-  DropdownToggle,
-  DropdownMenu,
-  DropdownItem,
-  NavbarText,
-} from "reactstrap";
+import React from "react";
+
+import { Navbar, NavbarBrand, Nav, NavItem, NavLink } from "reactstrap";
 
 const NavBar = (props) => {
-  const [isOpen, setIsOpen] = useState(false);
-
-  const toggle = () => setIsOpen(!isOpen);
-
   return (
-    <div>
-      <Navbar color="secondary" text-white expand="md">
+    <div className="text-warning">
+      <Navbar
+        className="text-warning"
+        color="secondary text-warning"
+        expand="md"
+      >
         <NavbarBrand href="/">VideoAPP</NavbarBrand>
-        <NavbarToggler onClick={toggle} />
-        <Collapse isOpen={isOpen} navbar>
-          <Nav className="mr-auto" navbar>
-            <NavItem>
-              <NavLink href="/aboutme/">About ME</NavLink>
-            </NavItem>
-          </Nav>
-        </Collapse>
+        <Nav className="mr-auto text-warning" navbar>
+          <NavItem>
+            <NavLink href="/likedVideos/">LIKED VIDEOS</NavLink>
+          </NavItem>
+          <NavItem>
+            <NavLink href="/aboutme/">About ME</NavLink>
+          </NavItem>
+        </Nav>
       </Navbar>
     </div>
   );
