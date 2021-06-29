@@ -11,13 +11,20 @@ import {
 
 import { MovieContex } from "../Context/MovieContex";
 
-const VideoItemDetails = ({ movie }) => {
+const VideoFoundDetail = ({ movie }) => {
   const { dispatch } = useContext(MovieContex);
-  const deleteVideoFromList = (id) => {
-    console.log(id);
+  console.log("movie");
+  console.log(movie.id);
+  const addMovieToLikeList = () => {
+    console.log("Dodaje");
     dispatch({
-      type: "REMOVE_MOVIE",
-      id,
+      type: "ADD_MOVIE_TO_LIKE_LIST",
+      movie: {
+        id: movie.id,
+        title: movie.title,
+        img: movie.img,
+        linkToClick: movie.linkToClick,
+      },
     });
   };
 
@@ -35,16 +42,16 @@ const VideoItemDetails = ({ movie }) => {
       />
       <CardBody class="width:80%">
         <CardTitle tag="h5">{movie.title}</CardTitle>
-        <CardSubtitle tag="h6" className="mb-2 ">
+        <CardSubtitle tag="h6" className="mb-2">
           Upload Date: {movie.dateUpload}
           ID: {movie.id}
         </CardSubtitle>
         <CardText>{movie.linkToClick}</CardText>
-        <Button outline onClick={() => deleteVideoFromList(movie.id)}>
-          Delete
+        <Button outline color="info" onClick={addMovieToLikeList}>
+          LIKE This video!
         </Button>
       </CardBody>
     </Card>
   );
 };
-export default VideoItemDetails;
+export default VideoFoundDetail;

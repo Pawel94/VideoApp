@@ -9,7 +9,7 @@ const VideoLikedList = () => {
       <h3>Liked LIST </h3>
       {movies.length > 0 ? (
         movies.map((movie) => {
-          return <VideoItemDetails movie={movie} />;
+          return <VideoItemDetails key={movie.id} movie={movie} />;
         })
       ) : (
         <p>Liked list is empty </p>

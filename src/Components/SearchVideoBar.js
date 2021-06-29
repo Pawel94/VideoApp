@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import { Button, Form, Input, Container, Row, Col } from "reactstrap";
 
-const SearchVideo = ({ handleFormSubmit }) => {
+const SearchVideo = ({ setURL }) => {
   const [state, setState] = useState("https://vimeo.com/562114431");
 
   const handleChange = (event) => {
@@ -9,8 +9,8 @@ const SearchVideo = ({ handleFormSubmit }) => {
   };
 
   const handleSubmit = (event) => {
+    setURL(state);
     event.preventDefault();
-    handleFormSubmit(state);
   };
 
   return (

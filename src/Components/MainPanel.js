@@ -1,40 +1,16 @@
-import React, { useState, useContext } from "react";
+import React from "react";
 import { Container } from "reactstrap";
-import GetByIdVimeo from "../FetchData/Viemo";
+import useApiFromVimeo from "../FetchHook/FetchHookVimeo";
 import SearchVideoBar from "./SearchVideoBar";
-import VideoList from "./VideoList";
-import VideoLikedList from "./VideoLikedList";
-import { MovieContex } from "../Context/MovieContex";
-
+import VideoFoundDetail from "./VideoFoundDetail";
 const SearchVideo = () => {
-  //const [videoSearch, setVideoSearch] = useState([]);
-  const [foundVideo, SetFoundVideo] = useState([]);
-  const { dispatch } = useContext(MovieContex);
-  const handleSubmit = (termFromSearchBar) => {
-    let [videoLinkJSON, linkToClick] = GetByIdVimeo(termFromSearchBar);
-
-    fetch(videoLinkJSON)
-      .then((response) => response.json())
-      .then((jsonData) => {
-        SetFoundVideo({
-          title: jsonData.title,
-          img: jsonData.thumbnail_url,
-          linkToClick: linkToClick,
-        });
-        console.log("jsonData");
-        console.log(foundVideo);
-        return jsonData;
-      })
-      .catch((error) => {
-        console.error(error);
-      });
-  };
+  const [{ foundVideo, isLoading, isError }, setURL] = useApiFromVimeo();
 
   return (
     <div>
-      <SearchVideoBar handleFormSubmit={handleSubmit} />
+      <SearchVideoBar setURL={setURL} />
       <Container className="themed-container">
-        <VideoList foundVideo={foundVideo} />
+        <VideoFoundDetail movie={foundVideo} />
       </Container>
     </div>
   );
