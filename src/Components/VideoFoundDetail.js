@@ -30,8 +30,8 @@ const VideoFoundDetail = ({ movie }) => {
 
   return (
     <Card
-      className="bg-secondary text-warning"
-      style={{ margin: "1%", textAlign: "center" }}
+      variant="top"
+      className="shadow-lg m-2 bg-white rounded text-secondary "
     >
       <CardImg
         top

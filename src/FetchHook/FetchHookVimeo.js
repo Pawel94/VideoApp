@@ -1,15 +1,21 @@
 import React, { useState, useEffect } from "react";
 import GetByIdVimeo from "../FetchData/Viemo";
-
+function handleErrors(response) {
+  if (!response.ok) {
+    throw Error(response.statusText);
+  }
+  return response;
+}
 const useApiFromVimeo = () => {
   const [foundVideo, SetFoundVideo] = useState([]);
-  const [url, setURL] = useState("https://vimeo.com/");
+  const [url, setURL] = useState("https://vimeo.com/562114431");
   const [isLoading, setIsLoading] = useState(false);
-  const [isError, setIsError] = useState();
+  const [isError, setIsError] = useState(false);
   useEffect(() => {
     let [videoLinkJSON, linkToClick] = GetByIdVimeo(url);
 
     fetch(videoLinkJSON)
+      .then(handleErrors)
       .then((response) => response.json())
       .then((jsonData) => {
         setIsError(false);
@@ -22,12 +28,17 @@ const useApiFromVimeo = () => {
             img: jsonData.thumbnail_url,
             linkToClick: linkToClick,
           },
-
           (error) => {
-            setIsLoading(true);
-            setIsError(error);
+            setIsLoading(false);
+            setIsError(true);
+            console.log(isError);
           }
         );
+      })
+      .catch(function (error) {
+        console.log("error");
+        setIsLoading(false);
+        setIsError(true);
       });
   }, [url]);
 

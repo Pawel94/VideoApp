@@ -15,21 +15,19 @@ const SearchVideo = ({ setURL }) => {
 
   return (
     <Form inline onSubmit={handleSubmit}>
-      <Container className="themed-container mt-5" fluid="xl">
-        <Row>
-          <Col xs="11">
-            <Input
-              onChange={handleChange}
-              name="video-search"
-              type="text"
-              value={state}
-            />
-          </Col>
-          <Col xs="1">
-            <Button>Find!</Button>
-          </Col>
-        </Row>
-      </Container>
+      <div class="row justify-content-center m-2">
+        <div class="col-6">
+          <Input
+            onChange={handleChange}
+            name="video-search"
+            type="text"
+            value={state}
+          />
+        </div>
+        <div class="col-1">
+          <Button>Find!</Button>
+        </div>
+      </div>
     </Form>
   );
 };
