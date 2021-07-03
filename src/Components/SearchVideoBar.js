@@ -1,14 +1,26 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { Button, Form, Input, Container, Row, Col } from "reactstrap";
+import Youtube from "../FetchData/Youtube";
 
-const SearchVideo = ({ setURL }) => {
-  const [state, setState] = useState("https://vimeo.com/562114431");
+const SearchVideo = ({ setURL, selectedoption }) => {
+  // const [state, setState] = useState("https://vimeo.com/562114431");
+  // const [state, setState] = useState(
+  //   "https://www.youtube.com/watch?v=bPITHEiFWLc&ab"
+  // );
 
+  const [state, setState] = useState();
+
+  useEffect(() => {
+    if (selectedoption === "youtube")
+      setState("https://www.youtube.com/watch?v=bPITHEiFWLc&ab");
+    else setState("https://vimeo.com/562114431");
+  }, [selectedoption]);
   const handleChange = (event) => {
     setState(event.target.value);
   };
 
   const handleSubmit = (event) => {
+    event.preventDefault();
     setURL(state);
     event.preventDefault();
   };

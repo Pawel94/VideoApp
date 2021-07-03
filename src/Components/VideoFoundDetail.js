@@ -1,4 +1,4 @@
-import React, { useContext } from "react";
+import React, { useContext, useState } from "react";
 import {
   Card,
   CardImg,
@@ -11,10 +11,9 @@ import {
 
 import { MovieContex } from "../Context/MovieContex";
 
-const VideoFoundDetail = ({ movie }) => {
+const VideoFoundDetail = ({ movie, selectedoption }) => {
   const { dispatch } = useContext(MovieContex);
-  console.log("movie");
-  console.log(movie.id);
+
   const addMovieToLikeList = () => {
     console.log("Dodaje");
     dispatch({
@@ -24,34 +23,49 @@ const VideoFoundDetail = ({ movie }) => {
         title: movie.title,
         img: movie.img,
         linkToClick: movie.linkToClick,
+        description: movie.description,
+        publishedAt: movie.publishedAt,
+        linkToClick: movie.linkToClick,
+        viewCount: movie.viewCount,
+        likeCount: movie.likeCount,
       },
     });
   };
-
   return (
-    <Card
-      variant="top"
-      className="shadow-lg m-2 bg-white rounded text-secondary "
-    >
-      <CardImg
-        top
-        width="100%"
-        src={movie.img}
-        alt="Card image cap"
-        onClick={() => window.open(movie.linkToClick)}
-      />
-      <CardBody class="width:80%">
-        <CardTitle tag="h5">{movie.title}</CardTitle>
-        <CardSubtitle tag="h6" className="mb-2">
-          Upload Date: {movie.dateUpload}
-          ID: {movie.id}
-        </CardSubtitle>
-        <CardText>{movie.linkToClick}</CardText>
-        <Button outline color="info" onClick={addMovieToLikeList}>
-          LIKE This video!
-        </Button>
-      </CardBody>
-    </Card>
+    <div>
+      {movie.id !== undefined ? (
+        <Card
+          variant="top"
+          className="shadow-lg m-2 bg-white rounded text-secondary "
+        >
+          <CardImg
+            top
+            width="100%"
+            src={movie.img}
+            alt="Card image cap"
+            onClick={() => window.open(movie.linkToClick)}
+          />
+          <CardBody class="width:80%">
+            <CardTitle tag="h5">{movie.title}</CardTitle>
+            <h1>{selectedoption}</h1>
+            <CardSubtitle tag="h6" className="mb-2">
+              ID: {movie.id}
+              published: {movie.published}
+              viewCount: {movie.viewCount}
+              Desription: {movie.description}
+            </CardSubtitle>
+            <CardText>{"movie.linkToClick"}</CardText>
+            <Button outline color="info" onClick={addMovieToLikeList}>
+              LIKE This video!
+            </Button>
+          </CardBody>
+        </Card>
+      ) : (
+        <h3 class="row justify-content-center m-2">
+          ADD new video from search bar
+        </h3>
+      )}
+    </div>
   );
 };
 export default VideoFoundDetail;

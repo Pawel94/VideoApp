@@ -1,5 +1,6 @@
 export const MovieReducer = (state, action) => {
-  console.log("reducer");
+  console.log("action");
+  console.log(action);
   switch (action.type) {
     // case "ADD_MOVIE":
     //   return [
@@ -19,10 +20,19 @@ export const MovieReducer = (state, action) => {
             id: action.movie.id,
             title: action.movie.title,
             img: action.movie.img,
+            img_medium: action.movie.img_medium,
             linkToClick: action.movie.linkToClick,
+            description: action.movie.description,
+            publishedAt: action.movie.publishedAt,
+            linkToClick: action.movie.linkToClick,
+            viewCount: action.movie.viewCount,
+            likeCount: action.movie.likeCount,
           },
         ];
       return [...state];
+    case "SORT_BY_NAME":
+      console.log(action.movies);
+      return state.sort((a, b) => (a.title > b.title ? 1 : -1));
     case "REMOVE_MOVIE":
       return state.filter((item) => item.id !== action.id);
     case "REMOVE_ALL":

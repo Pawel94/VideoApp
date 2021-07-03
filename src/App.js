@@ -4,7 +4,7 @@ import MainPanel from "./Components/MainPanel";
 import MovieProvider from "./Context/MovieContex";
 
 import { BrowserRouter, Route, Switch } from "react-router-dom";
-import VideoLikedList from "./Components/VideoLikedList";
+import VideoLikedMain from "./Components/LikedVideos/VideoLikedMain";
 function App() {
   return (
     <BrowserRouter>
@@ -12,7 +12,7 @@ function App() {
         <NavBar />
         <Switch>
           <Route exact path="/" component={MainPanel}></Route>
-          <Route path="/likedVideos" component={VideoLikedList}></Route>
+          <Route path="/likedVideos" component={VideoLikedMain}></Route>
         </Switch>
       </MovieProvider>
     </BrowserRouter>

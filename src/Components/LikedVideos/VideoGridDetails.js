@@ -10,9 +10,9 @@ import {
   CardFooter,
 } from "reactstrap";
 
-import { MovieContex } from "../Context/MovieContex";
+import { MovieContex } from "../../Context/MovieContex";
 
-const VideoItemDetails = ({ movie }) => {
+const VideoGridDetails = ({ movie }) => {
   const { dispatch } = useContext(MovieContex);
   const deleteVideoFromList = (id) => {
     console.log(id);
@@ -23,23 +23,26 @@ const VideoItemDetails = ({ movie }) => {
   };
 
   return (
-    <div class="col-sm-4">
+    <div class="col-sm-3">
       <Card
         variant="top"
-        className="shadow-lg p-3 mb-5 bg-white rounded text-secondary"
+        className="shadow-lg p-3 mb-5 bg-white rounded text-secondary "
       >
         <CardImg
           top
-          width="100%"
+          width="10%"
+          height="200px"
           src={movie.img}
           alt="Card image cap"
           onClick={() => window.open(movie.linkToClick)}
         />
-        <CardBody class="width:80%">
+        <CardBody>
           <CardTitle tag="h5">{movie.title}</CardTitle>
           <CardSubtitle tag="h6" className="mb-2 ">
-            Upload Date: {movie.dateUpload}
-            ID: {movie.id}
+            <CardText>Upload Date: {movie.dateUpload}</CardText>
+            <CardText> ID: {movie.id}</CardText>
+            <CardText>Upload Date: {movie.published}</CardText>
+            <CardText>Liked: {movie.likeCount}</CardText>
           </CardSubtitle>
           <CardText>{movie.linkToClick}</CardText>
           <Button
@@ -57,4 +60,4 @@ const VideoItemDetails = ({ movie }) => {
     </div>
   );
 };
-export default VideoItemDetails;
+export default VideoGridDetails;
