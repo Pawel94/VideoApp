@@ -1,6 +1,7 @@
 export const MovieReducer = (state, action) => {
   console.log("action");
-  console.log(action);
+  //console.log(action);
+  console.log(state);
   switch (action.type) {
     // case "ADD_MOVIE":
     //   return [
@@ -30,9 +31,14 @@ export const MovieReducer = (state, action) => {
           },
         ];
       return [...state];
-    case "SORT_BY_NAME":
-      console.log(action.movies);
-      return state.sort((a, b) => (a.title > b.title ? 1 : -1));
+    case "SORT_BY_TITLE":
+      state.sort((a, b) => (a.title > b.title ? 1 : -1));
+      console.table(state);
+      return [...state];
+    case "SORT_BY_DATA":
+      state.sort((a, b) => (a.published > b.published ? 1 : -1));
+      console.table(state);
+      return [...state];
     case "REMOVE_MOVIE":
       return state.filter((item) => item.id !== action.id);
     case "REMOVE_ALL":

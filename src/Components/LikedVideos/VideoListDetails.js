@@ -1,26 +1,11 @@
 import React, { useContext } from "react";
-import {
-  Card,
-  CardImg,
-  CardText,
-  CardBody,
-  CardTitle,
-  CardSubtitle,
-  Button,
-  CardFooter,
-  Col,
-  Row,
-} from "reactstrap";
+import { CardText, Button, Col, Row } from "reactstrap";
 
 import { MovieContex } from "../../Context/MovieContex";
-import {
-  ListGroup,
-  ListGroupItem,
-  ListGroupItemHeading,
-  ListGroupItemText,
-} from "reactstrap";
+import { ListGroupItem, ListGroupItemHeading } from "reactstrap";
 const VideoListDetails = ({ movie }) => {
   const { dispatch } = useContext(MovieContex);
+
   const deleteVideoFromList = (id) => {
     console.log(id);
     dispatch({
@@ -28,19 +13,17 @@ const VideoListDetails = ({ movie }) => {
       id,
     });
   };
-  console.log(movie.length);
 
   return (
     <div>
-      <ListGroupItem class="mx-auto">
-        <ListGroupItemHeading>{movie.title}</ListGroupItemHeading>
-        <div class="container">
+      <div class="mx-auto    ">
+        <div class="container shadow-lg p-3 mb-5 bg-white rounded text-secondary  ">
+          <ListGroupItemHeading>{movie.title}</ListGroupItemHeading>
           <Row>
             <Col class="col-sm-2">
               <img src={movie.img} class="img-thumbnail w-75" />
             </Col>
             <Col class="col-6">
-              <CardText>Upload Date: {movie.dateUpload}</CardText>
               <CardText> ID: {movie.id}</CardText>
               <CardText>Published Date: {movie.publishedAt}</CardText>
               <CardText>Liked: {movie.likeCount}</CardText>
@@ -61,7 +44,7 @@ const VideoListDetails = ({ movie }) => {
             </Col>
           </Row>
         </div>
-      </ListGroupItem>
+      </div>
     </div>
   );
 };

@@ -26,7 +26,7 @@ const VideoGridDetails = ({ movie }) => {
     <div class="col-sm-3">
       <Card
         variant="top"
-        className="shadow-lg p-3 mb-5 bg-white rounded text-secondary "
+        className="shadow-lg p-3 mb-5 bg-white rounded text-secondary min-vh-100 "
       >
         <CardImg
           top
@@ -39,7 +39,6 @@ const VideoGridDetails = ({ movie }) => {
         <CardBody>
           <CardTitle tag="h5">{movie.title}</CardTitle>
           <CardSubtitle tag="h6" className="mb-2 ">
-            <CardText>Upload Date: {movie.dateUpload}</CardText>
             <CardText> ID: {movie.id}</CardText>
             <CardText>Upload Date: {movie.published}</CardText>
             <CardText>Liked: {movie.likeCount}</CardText>
