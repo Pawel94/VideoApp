@@ -5,16 +5,19 @@ import ButtonDropdownComponent from "./ButtonDrop";
 import VideoGridDetails from "./VideoGridDetails";
 import PaginationComponent from "./PaginationComponent";
 const VideoLikedMain = () => {
-  const { movies } = useContext(MovieContex);
+  const { movies, likedMovies } = useContext(MovieContex);
   const [viewState, setViewState] = useState("List");
+  const [listOption, setlistOption] = useState(true);
   const [currentPage, setCurrentPage] = useState(1);
   const [postsPerPage, setpostPerPage] = useState(2);
   const indexOfLastPost = currentPage * postsPerPage;
   const indexOfFirstPost = indexOfLastPost - postsPerPage;
-  const currentMovies = movies.slice(indexOfFirstPost, indexOfLastPost);
+  let currentMovies = movies.slice(indexOfFirstPost, indexOfLastPost);
   const paginate = (pageNumber) => setCurrentPage(pageNumber);
 
-  console.log(postsPerPage);
+  listOption
+    ? (currentMovies = movies.slice(indexOfFirstPost, indexOfLastPost))
+    : (currentMovies = likedMovies.slice(indexOfFirstPost, indexOfLastPost));
 
   return (
     <div class="row">
@@ -26,6 +29,8 @@ const VideoLikedMain = () => {
         setViewState={setViewState}
         movies={movies}
         setpostPerPage={setpostPerPage}
+        setlistOption={setlistOption}
+        listOption={listOption}
       />
       <PaginationComponent
         postsPerPage={postsPerPage}

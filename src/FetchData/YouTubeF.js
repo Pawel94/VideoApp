@@ -6,7 +6,7 @@ const GetIdFromLink = (url) => {
 
 const GetByIdYoutube = (url) => {
   let id = GetIdFromLink(url);
-  const KEY = "AIzaSyAR2K7nwWP7HGHaDueClO1Fq5uSNqTRYR4";
+  const KEY = "";
   const fetchUrl = `https://www.googleapis.com/youtube/v3/videos?id=${id}&key=${KEY}&part=snippet,contentDetails,statistics,status`;
   const movieUrl = `https://www.youtube.com/watch?v=${id}`;
   //const fetchUrl = `https://www.googleapis.com/youtube/v3/videos?&key=${KEY}&part=snippet,contentDetails,statistics,status`;

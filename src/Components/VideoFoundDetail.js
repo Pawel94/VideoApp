@@ -7,6 +7,7 @@ import {
   CardTitle,
   CardSubtitle,
   Button,
+  Alert,
 } from "reactstrap";
 
 import { MovieContex } from "../Context/MovieContex";
@@ -25,18 +26,18 @@ const VideoFoundDetail = ({ movie, selectedoption }) => {
         linkToClick: movie.linkToClick,
         description: movie.description,
         publishedAt: movie.publishedAt,
-        linkToClick: movie.linkToClick,
         viewCount: movie.viewCount,
         likeCount: movie.likeCount,
       },
     });
   };
+
   return (
     <div>
       {movie.id !== undefined ? (
         <Card
           variant="top"
-          className="shadow-lg m-2 bg-white rounded text-secondary "
+          className="shadow-lg m-2 bg-white rounded text-secondary text-dark "
         >
           <CardImg
             top
@@ -45,25 +46,33 @@ const VideoFoundDetail = ({ movie, selectedoption }) => {
             alt="Card image cap"
             onClick={() => window.open(movie.linkToClick)}
           />
-          <CardBody class="width:80%">
-            <CardTitle tag="h5">{movie.title}</CardTitle>
-            <h1>{selectedoption}</h1>
-            <CardSubtitle tag="h6" className="mb-2">
-              ID: {movie.id}
-              published: {movie.published}
-              viewCount: {movie.viewCount}
+          <CardBody class="width:80% text-dark">
+            <CardTitle class="text-primary" tag="h4">
+              {movie.title}
+            </CardTitle>
+            <CardSubtitle class="text-dark" tag="h6" className="mb-2">
               Desription: {movie.description}
             </CardSubtitle>
-            <CardText>{"movie.linkToClick"}</CardText>
+            <CardText class="text-dark">ID: {movie.id} </CardText>
+            <CardText class="text-dark">Views: {movie.viewCount}</CardText>
+            <CardText class="text-dark">
+              Published: {movie.publishedAt}
+            </CardText>
+
+            <CardText class="text-dark">Likes: {movie.likeCount}</CardText>
+            <hr></hr>
+
             <Button outline color="info" onClick={addMovieToLikeList}>
-              LIKE This video!
+              ADD VIDEO TO YOUR LIST!
             </Button>
           </CardBody>
         </Card>
       ) : (
-        <h3 class="row justify-content-center m-2">
-          ADD new video from search bar
-        </h3>
+        <div>
+          <Alert color="dark" isOpen={true}>
+            Add new video - type correct URL
+          </Alert>
+        </div>
       )}
     </div>
   );

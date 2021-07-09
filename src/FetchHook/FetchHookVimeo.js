@@ -15,36 +15,6 @@ const useApiFromVimeo = () => {
   useEffect(() => {
     let [videoLinkJSON, linkToClick] = GetByIdVimeo(url);
 
-    // fetch(videoLinkJSON)
-    //   .then(handleErrors)
-    //   .then((response) => response.json())
-    //   .then((jsonData) => {
-    //     setIsError(false);
-    //     setIsLoading(true);
-    //     console.log(jsonData);
-    //     SetFoundVideo(
-    //       {
-    //         id: jsonData.video_id,
-    //         title: jsonData.title,
-    //         img: jsonData.thumbnail_url,
-    //         linkToClick: linkToClick,
-    //         published: jsonData.upload_date,
-    //         viewCount: "NO INFORMATION",
-    //         likeCount: "NO INFORMATION",
-    //       },
-    //       (error) => {
-    //         setIsLoading(false);
-    //         SetFoundVideo({});
-    //         setIsError(true);
-    //         console.log(isError);
-    //       }
-    //     );
-    //   })
-    //   .catch(function (error) {
-    //     console.log("error");
-    //     setIsLoading(false);
-    //     setIsError(true);
-    //   });
     function handleErrors(response) {
       if (!response.ok) {
         console.log("EEEEEEEEEEEEEEEEERRRRRRRRRRRRRRRRRRRROOOOR");
@@ -69,7 +39,7 @@ const useApiFromVimeo = () => {
             img: jsonData.thumbnail_url,
             linkToClick: linkToClick,
             description: jsonData.description,
-            published: jsonData.upload_date,
+            publishedAt: jsonData.upload_date,
             viewCount: "NO INFORMATION",
             likeCount: "NO INFORMATION",
           },

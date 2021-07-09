@@ -7,24 +7,24 @@ const SelectVideoRadioButton = ({ setSelectedOption, selectedoption }) => {
   };
 
   return (
-    <div class="row justify-content-center m-2" onChange={select}>
-      <div class="col-3">
+    <div class="row justify-content-center m-2 " onChange={select}>
+      <div class="col-2 ">
         <input
           type="radio"
           checked={selectedoption === "youtube"}
           value="youtube"
           name="typeOfVideo"
         />{" "}
-        <span>Youtube</span>
+        <span>YOUTUBE</span>
       </div>
-      <div class="col-3">
+      <div class="col-2 ">
         <input
           type="radio"
           checked={selectedoption === "Vimeo"}
           value="Vimeo"
           name="gender"
-        />
-        Vimeo
+        />{" "}
+        VIEMO
       </div>
     </div>
   );

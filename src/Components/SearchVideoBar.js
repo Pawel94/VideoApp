@@ -1,13 +1,7 @@
 import React, { useEffect, useState } from "react";
-import { Button, Form, Input, Container, Row, Col } from "reactstrap";
-import Youtube from "../FetchData/Youtube";
+import { Button, Form, Input } from "reactstrap";
 
 const SearchVideo = ({ setURL, selectedoption }) => {
-  // const [state, setState] = useState("https://vimeo.com/562114431");
-  // const [state, setState] = useState(
-  //   "https://www.youtube.com/watch?v=bPITHEiFWLc&ab"
-  // );
-
   const [state, setState] = useState();
 
   useEffect(() => {
@@ -27,7 +21,7 @@ const SearchVideo = ({ setURL, selectedoption }) => {
 
   return (
     <Form inline onSubmit={handleSubmit}>
-      <div class="row justify-content-center m-2">
+      <div class="row justify-content-center m-2 ">
         <div class="col-6">
           <Input
             onChange={handleChange}
@@ -36,8 +30,8 @@ const SearchVideo = ({ setURL, selectedoption }) => {
             value={state}
           />
         </div>
-        <div class="col-1">
-          <Button>Find!</Button>
+        <div class="col-2">
+          <Button class="btn btn-info">Find video!</Button>
         </div>
       </div>
     </Form>

@@ -10,10 +10,10 @@ const NavBar = (props) => {
         color="dark text-warning"
         expand="md"
       >
-        <NavbarBrand href="/"> VIDEOAPP</NavbarBrand>
+        <NavbarBrand href="/"> VIDEO - APP</NavbarBrand>
         <Nav className="mr-auto text-warning" navbar>
           <NavItem>
-            <NavLink href="/likedVideos/">LIKED VIDEOS</NavLink>
+            <NavLink href="/likedVideos/">Your video list</NavLink>
           </NavItem>
           <NavItem>
             <NavLink href="/aboutme/">About ME</NavLink>
